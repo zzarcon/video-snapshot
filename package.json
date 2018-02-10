@@ -1,0 +1,26 @@
+{
+  "name": "video-snapshot",
+  "version": "0.0.1",
+  "description": "Get a image preview from a video file",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "webpack -w",
+    "dev": "webpack-dev-server",
+    "test": "jest",
+    "test:ci": "jest --runInBand --coverage",
+    "build": "NODE_ENV=production tsc -p ./tsconfig.prod.json",
+    "release": "npm version patch && git push --tags && git push && npm publish",
+    "prepublishOnly": "yarn test:ci && yarn build"
+  },
+  "repository": "git@github.com:zzarcon/video-snapshot.git",
+  "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "awesome-typescript-loader": "^3.4.1",
+    "jest": "^22.1.4",
+    "typescript": "^2.7.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}
