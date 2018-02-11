@@ -24,7 +24,9 @@ class VideoSnapshot {
         video.play();
       } else {
         // TODO: Handle custom times
-        video.currentTime = time; 
+        if (typeof time === 'number') {
+          video.currentTime = time;
+        }
       }
       
       // TODO: Remove event listener
@@ -37,6 +39,7 @@ class VideoSnapshot {
     });
   }
 
+  // TODO: Support time="1:20", time="01:05"
   takeSnapshot(time?: VideoTime): Promise<string> {
     return this.loadVideo(time).then((video) => {
       const canvas = document.createElement('canvas');
