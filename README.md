@@ -7,7 +7,7 @@
 > Get a image preview from a video file
 
 # Demo
-[https://zzarcon.github.io/growy](https://zzarcon.github.io/growy)
+[https://zzarcon.github.io/video-snapshot](https://zzarcon.github.io/video-snapshot)
 # Install
 
 ```
