@@ -1,28 +1,24 @@
 const path = require('path');
-const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   devServer: {
     
   },
-  entry: './example/index.tsx',
+  entry: './index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    // path: path.resolve(__dirname, 'dist'),
+    filename: './bundle.js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   devtool: 'source-map',
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader'
+        test: /\.jsx?$/,
+        loader: 'babel-loader'
       }
     ]
-  },
-  plugins: [
-    new CheckerPlugin()
-  ]
+  }
 };

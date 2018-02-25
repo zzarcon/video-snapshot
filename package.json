@@ -1,40 +1,32 @@
 {
-  "name": "video-snapshot",
-  "version": "0.0.3",
-  "description": "Get snapshots from a video file in the browser",
+  "name": "video-snapshot-demo",
+  "version": "0.0.1",
+  "description": "video-snapshot-demo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "webpack -w",
     "dev": "webpack-dev-server",
-    "test": "jest",
-    "test:ci": "jest --runInBand --coverage",
-    "build": "NODE_ENV=production tsc -p ./tsconfig.prod.json",
-    "release": "npm version patch && git push --tags && git push && npm publish",
-    "prepublishOnly": "yarn test:ci && yarn build"
+    "build": "webpack"
   },
   "repository": "git@github.com:zzarcon/video-snapshot.git",
   "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^22.1.1",
-    "awesome-typescript-loader": "^3.4.1",
-    "jest": "^22.1.4",
-    "typescript": "^2.7.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
-    },
-    "testMatch": [
-      "**/__tests__/*.(ts|js)"
-    ],
-    "resetMocks": true
+  "dependencies": {
+    "@atlaskit/button": "^6.4.1",
+    "@atlaskit/field-text": "^4.1.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.1.6",
+    "video-snapshot": "^0.0.3"
   }
 }
