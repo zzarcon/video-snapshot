@@ -11,6 +11,13 @@ const onChange = async (e: Event) => {
 
   renderImage(image);
   renderImage(image2);
+
+  snapshoter.end();
+
+  const image3 = await snapshoter.takeSnapshot(10);
+
+  renderImage(image3);
+  renderVideo(snapshoter.videoUrl);
 };
 
 const renderImage = (src: string) => {
@@ -20,5 +27,14 @@ const renderImage = (src: string) => {
 
   document.body.appendChild(img);
 };
+
+const renderVideo = (src: string) => {
+  const video = document.createElement('video');
+
+  video.src = src;
+  video.controls = true;
+
+  document.body.appendChild(video);
+}
 
 browse.addEventListener('change', onChange);

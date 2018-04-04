@@ -3,7 +3,7 @@
   <br><br>
 </div>
 
-# video-snapshot
+# video-snapshot [![Build Status](https://travis-ci.org/zzarcon/video-snapshot.svg?branch=master)](https://travis-ci.org/zzarcon/video-snapshot)
 > Get a image preview from a video file
 
 # Demo
