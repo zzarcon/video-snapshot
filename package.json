@@ -1,6 +1,6 @@
 {
   "name": "video-snapshot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get snapshots from a video file in the browser",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
