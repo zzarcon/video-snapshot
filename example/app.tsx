@@ -5,6 +5,9 @@ import Button from '@atlaskit/button';
 import FieldText from '@atlaskit/field-text';
 import {PreviewWrapper, TimeWrapper, ActionsWrapper, Preview, FileInput} from './styled';
 
+// TODO: render video element
+// TODO: render download button
+
 export interface AppProps {
 
 }
