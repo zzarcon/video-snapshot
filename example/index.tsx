@@ -4,7 +4,7 @@ const browse = document.getElementById('browse');
 
 const onChange = async (e: Event) => {
   const files = (e.target as HTMLInputElement).files;
-  const snapshoter = new VideoSnapshot(files[0]);
+  const snapshoter = new VideoSnapshot(files![0]);
 
   const image = await snapshoter.takeSnapshot(100);
   const image2 = await snapshoter.takeSnapshot();
@@ -37,4 +37,4 @@ const renderVideo = (src: string) => {
   document.body.appendChild(video);
 }
 
-browse.addEventListener('change', onChange);
+browse!.addEventListener('change', onChange);
