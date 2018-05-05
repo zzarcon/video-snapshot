@@ -29,8 +29,8 @@ const ghLink = (
 );
 
 export default class App extends Component<AppProps, AppState> {
-  inputRef: HTMLInputElement;
-  snapshoter: VideoSnapshot;
+  inputRef?: HTMLInputElement;
+  snapshoter?: VideoSnapshot;
 
   state: AppState = {
     currentTime: 0,
@@ -50,10 +50,11 @@ export default class App extends Component<AppProps, AppState> {
   }
   
   pickFile = () => {
-    this.inputRef.click();
+    this.inputRef && this.inputRef.click();
   }
 
-  onSnapshot = async (e: any) => {
+  onSnapshot = async () => {
+    if (!this.snapshoter) return;
     const {currentTime} = this.state;
     const videoPreview = await this.snapshoter.takeSnapshot(currentTime);
     
