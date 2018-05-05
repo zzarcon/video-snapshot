@@ -8,9 +8,6 @@ import Button from '@atlaskit/button';
 import VideoSnapshot from '../src';
 import {PlayIconWrapper, VideoWrapper, AppWrapper, VideoPreview, PreviewWrapper, ActionsWrapper, Preview, FileInput} from './styled';
 
-// TODO: render video element
-// TODO: render download button
-
 export interface AppProps {
 
 }
