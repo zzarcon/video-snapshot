@@ -5,13 +5,17 @@ injectGlobal`
     font-family: Helvetica;
     background-color: #D8D1F5;
   }
+
   input {
     display: block;
   }
-  img {
-    width: 300px;
-    border: 1px solid;
-    margin: 5px;
+
+  h1 {
+    border-bottom: 1px solid #D8D1F5;
+    border-top: 1px solid #d8d1f5;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
   }
   
   .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
@@ -22,7 +26,7 @@ injectGlobal`
 `;
 
 export const Preview = styled.img`
-  width: 300px;
+  max-width: 100%;
   border-radius: 3px;
 `;
 
@@ -31,7 +35,9 @@ export const FileInput = styled.input`
 `;
 
 export const PreviewWrapper = styled.div`
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const ActionsWrapper = styled.div`

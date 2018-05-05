@@ -27,6 +27,7 @@ class VideoSnapshot {
 
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+    // TODO: better quality => toDataURL('image/jpeg', 1)
     const dataURL = canvas.toDataURL();
 
     return dataURL;

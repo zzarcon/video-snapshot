@@ -13,7 +13,6 @@ export interface AppProps {
 }
 
 export interface AppState {
-  currentTime: number;
   videoPreview?: string;
   videoUrl?: string;
 }
@@ -30,17 +29,19 @@ const ghLink = (
 
 export default class App extends Component<AppProps, AppState> {
   inputRef?: HTMLInputElement;
+  videoRef?: HTMLVideoElement;
+  videoFile?: File;
   snapshoter?: VideoSnapshot;
 
   state: AppState = {
-    currentTime: 0,
+
   }
   
   onChange = async (e: any) => {
     const files = e.target.files;
-    const videoFile = files[0];
-    const videoUrl = URL.createObjectURL(videoFile);
-    this.snapshoter = new VideoSnapshot(videoFile);
+    this.videoFile = files[0];
+    const videoUrl = URL.createObjectURL(this.videoFile);
+    this.snapshoter = new VideoSnapshot(this.videoFile!);
     const videoPreview = await this.snapshoter.takeSnapshot();
     
     this.setState({
@@ -54,10 +55,12 @@ export default class App extends Component<AppProps, AppState> {
   }
 
   onSnapshot = async () => {
-    if (!this.snapshoter) return;
-    const {currentTime} = this.state;
+    if (!this.snapshoter || !this.videoRef) return;
+
+    const currentTime = this.videoRef.currentTime;
+    console.time('snapshot');
     const videoPreview = await this.snapshoter.takeSnapshot(currentTime);
-    
+    console.timeEnd('snapshot');
     this.setState({
       videoPreview
     });
@@ -69,10 +72,10 @@ export default class App extends Component<AppProps, AppState> {
     this.inputRef = e;
   }
 
-  onTimeChange = (e: any) => {
-    this.setState({
-      currentTime: e.target.value
-    });
+  saveVideoRef = (e: any) => {
+    if (!e) return
+
+    this.videoRef = e;
   }
 
   renderVideo() {
@@ -81,7 +84,7 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <VideoWrapper>
         {videoUrl ? 
-          <VideoPreview src={videoUrl} controls autoPlay /> :
+          <VideoPreview innerRef={this.saveVideoRef} src={videoUrl} controls autoPlay /> :
           <PlayIconWrapper onClick={this.pickFile}>
             <VidPlayIcon label="video" size="xlarge" />
           </PlayIconWrapper>
@@ -91,13 +94,30 @@ export default class App extends Component<AppProps, AppState> {
   }
   
   downloadSnapshot = () => {
+    const {videoPreview} = this.state;
+    const link = document.createElement('a');
 
+    link.href = videoPreview!;
+    link.download = `${this.videoFile!.name}_preview.jpg`;
+    document.body.appendChild(link);
+    link.click();
+  }
+
+  renderSnapshotPreview = () => {
+    const {videoPreview} = this.state;
+    if (!videoPreview) return;
+
+    return (
+      <PreviewWrapper>
+        <h1>Snapshot preview 🦄</h1>
+        <Preview src={videoPreview} />
+      </PreviewWrapper>
+    );
   }
 
   render() {
     const {videoPreview} = this.state;
     const hasPreview = !!videoPreview;
-    const img = videoPreview ? <Preview src={videoPreview} /> : null;
     
     return (
       <AppWrapper>
@@ -125,9 +145,9 @@ export default class App extends Component<AppProps, AppState> {
             Download
           </Button>
         </ActionsWrapper>
-        <PreviewWrapper>
-          {img}
-        </PreviewWrapper>        
+        {this.renderSnapshotPreview()}
+        <h1>Author 👑</h1>
+        <a href="https://twitter.com/zzarcon">@zzarcon</a>
       </AppWrapper>
     );
   }
