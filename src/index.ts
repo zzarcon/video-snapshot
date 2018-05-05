@@ -21,6 +21,10 @@ class VideoSnapshot {
     canvas.height = video.videoHeight;
     const context = canvas.getContext('2d');
     
+    if (!context) {
+      throw new Error('error creating canvas context');
+    }
+
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const dataURL = canvas.toDataURL();
@@ -33,8 +37,9 @@ class VideoSnapshot {
   }
 
   // TODO: implement video cache
+  // TODO: Handle video error and reject?
   private loadVideo = (time: VideoTime = 0): Promise<HTMLVideoElement> => (
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       const video = document.createElement('video');
 
       video.preload = 'metadata';

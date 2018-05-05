@@ -6,7 +6,7 @@ describe('VideoSnapshot', () => {
     const videoFile = new File([''], 'video.mp4');
     const createObjectURL = jest.fn().mockReturnValue('video-url');
     const revokeObjectURL = jest.fn();
-    const addEventListener = jest.fn().mockImplementation((name, callback) => {
+    const addEventListener = jest.fn().mockImplementation((_, callback) => {
       callback();
     });
     const removeEventListener = jest.fn();
@@ -28,7 +28,7 @@ describe('VideoSnapshot', () => {
       videoHeight: 50,
       height: 50,
     } as Partial<HTMLVideoElement>;
-    const createElement = jest.fn().mockImplementation(type => {
+    const createElement = jest.fn().mockImplementation((type: string) => {
       if (type === 'video') {
         return video;
       } else if (type === 'canvas') {
@@ -37,6 +37,8 @@ describe('VideoSnapshot', () => {
           toDataURL: jest.fn().mockReturnValue('data-img')
         }
       }
+
+      return;
     });
 
     global.URL.createObjectURL = createObjectURL;
@@ -67,7 +69,7 @@ describe('VideoSnapshot', () => {
   it('should set video time when snapshot time is passed', async () => {
     const {videoFile, video, play} = setup();
     const snapshoter = new VideoSnapshot(videoFile);
-    const snapshot = await snapshoter.takeSnapshot(100);
+    await snapshoter.takeSnapshot(100);
 
     expect(play).not.toBeCalled();
     expect(video.currentTime).toEqual(100);
@@ -76,7 +78,7 @@ describe('VideoSnapshot', () => {
   it('should clear everything once the snapshot is done', async () => {
     const {videoFile, removeEventListener, pause} = setup();
     const snapshoter = new VideoSnapshot(videoFile);
-    const snapshot = await snapshoter.takeSnapshot();
+    await snapshoter.takeSnapshot();
 
     expect(removeEventListener).toHaveBeenCalledTimes(1);
     expect(pause).toHaveBeenCalledTimes(1);
