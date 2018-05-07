@@ -122,6 +122,9 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <AppWrapper>
         {ghLink}
+        <h1>
+          # Video snapshot 🎥
+        </h1>
         {this.renderVideo()}
         <ActionsWrapper>
           <Button appearance="primary" onClick={this.pickFile} iconAfter={<AttachmentIcon label="file" />}>
@@ -146,8 +149,8 @@ export default class App extends Component<AppProps, AppState> {
           </Button>
         </ActionsWrapper>
         {this.renderSnapshotPreview()}
-        <h1>Author 👑</h1>
-        <a href="https://twitter.com/zzarcon">@zzarcon</a>
+        {/* <h1>Author 👑</h1>
+        <a href="https://twitter.com/zzarcon">@zzarcon</a> */}
       </AppWrapper>
     );
   }

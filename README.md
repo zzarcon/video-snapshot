@@ -4,17 +4,18 @@
 </div>
 
 # video-snapshot [![Build Status](https://travis-ci.org/zzarcon/video-snapshot.svg?branch=master)](https://travis-ci.org/zzarcon/video-snapshot)
-> Get a image preview from a video file
+> Get snapshots from a video file in the browser
 
-# Demo
+# Demo 💅
 [https://zzarcon.github.io/video-snapshot](https://zzarcon.github.io/video-snapshot)
-# Install
+
+# Install 🚀
 
 ```
 $ yarn add video-snapshot
 ```
 
-# Usage
+# Usage ⛏
 
 ```javascript
 import VideoSnapshot from 'video-snapshot';
@@ -31,3 +32,27 @@ const onChange = async (e) => {
   document.body.appendChild(img);
 };
 ```
+
+# Api 👀
+
+```typescript
+type CustomVideoTime = 'start' | 'middle' | 'end';
+type VideoTime = number | CustomVideoTime;
+
+class VideoSnapshot {
+  constructor(blob: Blob) {};
+  takeSnapshot(time?: VideoTime): Promise<string>;
+  end(): void;
+}
+```
+
+# Features 💸
+
+* Dependency free
+* [2kb size](https://bundlephobia.com/result?p=video-snapshot@1.0.1)
+* Take snapshot at any time
+* You can pass **smart times** to easily get better previews
+
+# Author 🦄
+
+[@zzarcon](https://twitter.com/zzarcon)

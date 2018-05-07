@@ -25,10 +25,15 @@
   "engines": {
     "node": ">=8.5.0"
   },
-  "peerDependencies": {
-    "react": "^16.2.0"
-  },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "video",
+    "snapshot",
+    "preview",
+    "screenshot",
+    "capture",
+    "image"
   ]
 }
