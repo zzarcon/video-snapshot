@@ -18,7 +18,7 @@ describe('VideoSnapshot', () => {
     });
     const pause = jest.fn();
     const play = jest.fn();
-    const video = {
+    const video: Partial<HTMLVideoElement> = {
       addEventListener,
       removeEventListener,
       play,
@@ -27,7 +27,7 @@ describe('VideoSnapshot', () => {
       width: 100,
       videoHeight: 50,
       height: 50,
-    } as Partial<HTMLVideoElement>;
+    };
     const createElement = jest.fn().mockImplementation((type: string) => {
       if (type === 'video') {
         return video;

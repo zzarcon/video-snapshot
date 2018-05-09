@@ -5178,9 +5178,9 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-react-toolbox@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.1.1.tgz#590c29bd8f94e7b69267dcceaae7107b72450000"
+ts-react-toolbox@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.1.6.tgz#78891bfb54d65986db043b884fb8bc6d937694bb"
   dependencies:
     "@types/enzyme" "^3.1.9"
     "@types/jest" "^22.2.0"

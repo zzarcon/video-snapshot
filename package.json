@@ -12,7 +12,8 @@
     "release": "ts-react-toolbox release",
     "bootstrap": "ts-react-toolbox init",
     "lint": "ts-react-toolbox lint",
-    "static": "ts-react-toolbox publish"
+    "static": "ts-react-toolbox publish",
+    "format": "ts-react-toolbox format"
   },
   "repository": "git@github.com:zzarcon/video-snapshot.git",
   "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
@@ -20,7 +21,7 @@
   "devDependencies": {
     "@atlaskit/button": "^7.2.0",
     "@atlaskit/icon": "^11.1.0",
-    "ts-react-toolbox": "^0.1.1"
+    "ts-react-toolbox": "^0.1.6"
   },
   "engines": {
     "node": ">=8.5.0"
