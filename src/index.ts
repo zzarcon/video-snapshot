@@ -8,7 +8,7 @@ class VideoSnapshot {
   // TODO: Add support for base64?
   constructor(blob: Blob) {
     const url = URL.createObjectURL(blob);
-    
+
     this.videoUrl = url;
   }
 
@@ -20,7 +20,7 @@ class VideoSnapshot {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     const context = canvas.getContext('2d');
-    
+
     if (!context) {
       throw new Error('error creating canvas context');
     }
@@ -39,8 +39,8 @@ class VideoSnapshot {
 
   // TODO: implement video cache
   // TODO: Handle video error and reject?
-  private loadVideo = (time: VideoTime = 0): Promise<HTMLVideoElement> => (
-    new Promise((resolve) => {
+  private loadVideo = (time: VideoTime = 0): Promise<HTMLVideoElement> =>
+    new Promise(resolve => {
       const video = document.createElement('video');
 
       video.preload = 'metadata';
@@ -53,8 +53,9 @@ class VideoSnapshot {
         // TODO: Handle smart times
         if (typeof time === 'number') {
           video.currentTime = time;
-          
-          if (isSafari) { // Safari needs to always play the video 
+
+          if (isSafari) {
+            // Safari needs to always play the video
             video.play();
           }
         }
@@ -66,8 +67,7 @@ class VideoSnapshot {
         video.pause();
         resolve(video);
       });
-    })
-  )
+    });
 
   private revoke() {
     URL.revokeObjectURL(this.videoUrl);
