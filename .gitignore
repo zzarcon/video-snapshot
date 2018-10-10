@@ -59,3 +59,7 @@ typings/
 
 dist
 publish_dist
+
+# macOS Desktop Services Store
+.DS_Store
+._.DS_Store

@@ -50,14 +50,22 @@ class VideoSnapshot {
       if (time === 0) {
         video.play();
       } else {
-        // TODO: Handle smart times
         if (typeof time === 'number') {
           video.currentTime = time;
+        } else if (typeof time === 'string') {
+          const duration = video.duration || 0;
+          const smartTimes = {
+            start: 0,
+            middle: duration / 2,
+            end: duration,
+          };
 
-          if (isSafari) {
-            // Safari needs to always play the video
-            video.play();
-          }
+          video.currentTime = smartTimes[time];
+        }
+
+        if (isSafari) {
+          // Safari needs to always play the video
+          video.play();
         }
       }
 
