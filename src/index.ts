@@ -50,14 +50,16 @@ class VideoSnapshot {
       if (time === 0) {
         video.play();
       } else {
-        // TODO: Handle smart times
         if (typeof time === 'number') {
           video.currentTime = time;
+        } else if (typeof time === 'string') {
+          const duration = video.duration;
+          video.currentTime = this.getSmartTime(time, duration);
+        }
 
-          if (isSafari) {
-            // Safari needs to always play the video
-            video.play();
-          }
+        if (isSafari) {
+          // Safari needs to always play the video
+          video.play();
         }
       }
 
@@ -71,6 +73,15 @@ class VideoSnapshot {
 
   private revoke() {
     URL.revokeObjectURL(this.videoUrl);
+  }
+
+  private getSmartTime(time: CustomVideoTime, duration: number = 0): number {
+    const smartTimes = {
+      start: 0,
+      middle: duration / 2,
+      end: duration,
+    };
+    return smartTimes[time]
   }
 }
 

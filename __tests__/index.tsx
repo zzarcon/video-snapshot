@@ -27,6 +27,7 @@ describe('VideoSnapshot', () => {
       width: 100,
       videoHeight: 50,
       height: 50,
+      duration: 100,
     };
     const createElement = jest.fn().mockImplementation((type: string) => {
       if (type === 'video') {
@@ -72,6 +73,20 @@ describe('VideoSnapshot', () => {
     await snapshoter.takeSnapshot(100);
 
     expect(play).not.toBeCalled();
+    expect(video.currentTime).toEqual(100);
+  });
+
+  it('should set smart video time when snapshot time is passed', async () => {
+    const {videoFile, video} = setup();
+    const snapshoter = new VideoSnapshot(videoFile);
+
+    await snapshoter.takeSnapshot('start');
+    expect(video.currentTime).toEqual(0);
+
+    await snapshoter.takeSnapshot('middle');
+    expect(video.currentTime).toEqual(50);
+
+    await snapshoter.takeSnapshot('end');
     expect(video.currentTime).toEqual(100);
   });
 
