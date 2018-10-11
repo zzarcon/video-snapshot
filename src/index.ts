@@ -53,14 +53,8 @@ class VideoSnapshot {
         if (typeof time === 'number') {
           video.currentTime = time;
         } else if (typeof time === 'string') {
-          const duration = video.duration || 0;
-          const smartTimes = {
-            start: 0,
-            middle: duration / 2,
-            end: duration,
-          };
-
-          video.currentTime = smartTimes[time];
+          const duration = video.duration;
+          video.currentTime = this.getSmartTime(time, duration);
         }
 
         if (isSafari) {
@@ -79,6 +73,15 @@ class VideoSnapshot {
 
   private revoke() {
     URL.revokeObjectURL(this.videoUrl);
+  }
+
+  private getSmartTime(time: CustomVideoTime, duration: number = 0): number {
+    const smartTimes = {
+      start: 0,
+      middle: duration / 2,
+      end: duration,
+    };
+    return smartTimes[time]
   }
 }
 
