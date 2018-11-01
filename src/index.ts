@@ -1,6 +1,9 @@
 export type CustomVideoTime = 'start' | 'middle' | 'end';
 export type VideoTime = number | CustomVideoTime;
-
+export interface Dimensions {
+  width: number;
+  height: number;
+}
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 class VideoSnapshot {
   videoUrl: string;
@@ -70,6 +73,15 @@ class VideoSnapshot {
         resolve(video);
       });
     });
+  
+  getDimensions = async (): Promise<Dimensions> => {
+    const video = await this.loadVideo();
+
+    return {
+      width: video.videoWidth,
+      height: video.videoHeight
+    };
+  }
 
   private revoke() {
     URL.revokeObjectURL(this.videoUrl);
