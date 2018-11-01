@@ -132,7 +132,7 @@ export default class App extends Component<AppProps, AppState> {
       <AppWrapper>
         {ghLink}
         <h1>
-          # Video snapshot 🎥
+          Video snapshot 🎥
         </h1>
         {this.renderVideo()}
         <ActionsWrapper>
