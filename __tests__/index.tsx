@@ -107,4 +107,16 @@ describe('VideoSnapshot', () => {
 
     expect(revokeObjectURL).toBeCalledWith('video-url');
   });
+
+  it('getDimensions()', async () => {
+    const {videoFile} = setup();
+    const snapshoter = new VideoSnapshot(videoFile);
+  
+    const dimensions = await snapshoter.getDimensions();
+
+    expect(dimensions).toEqual({
+      width: 100,
+      height: 50
+    })
+  })
 });

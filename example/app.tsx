@@ -4,6 +4,7 @@ import VidPlayIcon from '@atlaskit/icon/glyph/vid-play';
 import AttachmentIcon from '@atlaskit/icon/glyph/attachment';
 import CameraFilledIcon from '@atlaskit/icon/glyph/camera-filled';
 import DownloadIcon from '@atlaskit/icon/glyph/download';
+import EmojiFoodIcon from '@atlaskit/icon/glyph/emoji/food';
 import Button from '@atlaskit/button';
 import VideoSnapshot from '../src';
 import {PlayIconWrapper, VideoWrapper, AppWrapper, VideoPreview, PreviewWrapper, ActionsWrapper, Preview, FileInput} from './styled';
@@ -115,6 +116,14 @@ export default class App extends Component<AppProps, AppState> {
     );
   }
 
+  getDimensions = async () => {
+    if (!this.snapshoter) return;
+
+    const dimensions = await this.snapshoter.getDimensions();
+
+    console.log(dimensions);
+  }
+
   render() {
     const {videoPreview} = this.state;
     const hasPreview = !!videoPreview;
@@ -123,7 +132,7 @@ export default class App extends Component<AppProps, AppState> {
       <AppWrapper>
         {ghLink}
         <h1>
-          # Video snapshot 🎥
+          Video snapshot 🎥
         </h1>
         {this.renderVideo()}
         <ActionsWrapper>
@@ -146,6 +155,14 @@ export default class App extends Component<AppProps, AppState> {
             isDisabled={!hasPreview}
           >
             Download
+          </Button>
+          <Button 
+            appearance="primary"
+            onClick={this.getDimensions}
+            isDisabled={!hasPreview}
+            iconAfter={<EmojiFoodIcon label="info" />}
+          >
+            Get dimensions
           </Button>
         </ActionsWrapper>
         {this.renderSnapshotPreview()}
