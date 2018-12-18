@@ -4,7 +4,7 @@ export interface Dimensions {
   width: number;
   height: number;
 }
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 class VideoSnapshot {
   videoUrl: string;
 
