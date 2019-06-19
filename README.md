@@ -3,7 +3,7 @@
   <br><br>
 </div>
 
-# video-snapshot
+# video-snapshot [![Build Status](https://travis-ci.org/zzarcon/video-snapshot.svg?branch=master)](https://travis-ci.org/zzarcon/video-snapshot)
 > Get snapshots from a video file in the browser
 
 EN | [中文文档](./README_ZH.md)
@@ -58,18 +58,7 @@ class VideoSnapshot {
 * [2kb size](https://bundlephobia.com/result?p=video-snapshot@1.0.1)
 * Take snapshot at any time
 * You can pass **smart times** to easily get better previews
-  
-# Development
-
-## Install
-
-```
-yarn install --ignore-engines
-```
 
 # Author 🦄
 
 [@zzarcon](https://twitter.com/zzarcon)
-
-**Updated by**
-[@tommyshao](https://github.com/tomieric)

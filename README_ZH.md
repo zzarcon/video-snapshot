@@ -3,7 +3,7 @@
   <br><br>
 </div>
 
-# video-snapshot
+# video-snapshot [![Build Status](https://travis-ci.org/zzarcon/video-snapshot.svg?branch=master)](https://travis-ci.org/zzarcon/video-snapshot)
 > 在浏览器中获取到视频的截图
 
 [EN](https://github.com/Kuaizi-co/video-snapshot) | 中文文档
