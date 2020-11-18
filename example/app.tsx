@@ -43,11 +43,17 @@ export default class App extends Component<AppProps, AppState> {
     this.videoFile = files[0];
     const videoUrl = URL.createObjectURL(this.videoFile);
     this.snapshoter = new VideoSnapshot(this.videoFile!);
-    const videoPreview = await this.snapshoter.takeSnapshot();
+    try {
+      const videoPreview = await this.snapshoter.takeSnapshot();
+      this.setState({
+        videoPreview
+      });
+    } catch (e) {
+      console.log(e)
+    }
     
     this.setState({
-      videoUrl,
-      videoPreview
+      videoUrl
     });
   }
   
@@ -119,9 +125,12 @@ export default class App extends Component<AppProps, AppState> {
   getDimensions = async () => {
     if (!this.snapshoter) return;
 
-    const dimensions = await this.snapshoter.getDimensions();
-
-    console.log(dimensions);
+    try {
+      const dimensions = await this.snapshoter.getDimensions();
+      console.log(dimensions);
+    } catch (e) {
+      console.log('error getting dimensions');
+    }
   }
 
   render() {

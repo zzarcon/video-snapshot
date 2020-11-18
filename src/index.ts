@@ -41,9 +41,8 @@ class VideoSnapshot {
   }
 
   // TODO: implement video cache
-  // TODO: Handle video error and reject?
   private loadVideo = (time: VideoTime = 0): Promise<HTMLVideoElement> =>
-    new Promise(resolve => {
+    new Promise((resolve, reject) => {
       const video = document.createElement('video');
 
       video.preload = 'metadata';
@@ -72,6 +71,9 @@ class VideoSnapshot {
         video.pause();
         resolve(video);
       });
+      video.addEventListener('error', () => {
+        reject('failed to load video');
+      })
     });
   
   getDimensions = async (): Promise<Dimensions> => {
