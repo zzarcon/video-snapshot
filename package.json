@@ -1,9 +1,11 @@
 {
   "name": "video-snapshot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get snapshots from a video file in the browser",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/es5/index.js",
+  "jsnext:main": "dist/es2015/index.js",
+  "module": "dist/es2015/index.js",
+  "types": "dist/es5/index.d.ts",
   "scripts": {
     "dev": "ts-react-toolbox dev",
     "test": "ts-react-toolbox test",
@@ -13,7 +15,8 @@
     "bootstrap": "ts-react-toolbox init",
     "lint": "ts-react-toolbox lint",
     "static": "ts-react-toolbox publish",
-    "format": "ts-react-toolbox format"
+    "format": "ts-react-toolbox format",
+    "analyze": "ts-react-toolbox analyze"
   },
   "repository": "git@github.com:zzarcon/video-snapshot.git",
   "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
@@ -21,7 +24,7 @@
   "devDependencies": {
     "@atlaskit/button": "^7.2.0",
     "@atlaskit/icon": "^11.1.0",
-    "ts-react-toolbox": "^0.1.10"
+    "ts-react-toolbox": "^1.1.1"
   },
   "engines": {
     "node": ">=8.5.0"
