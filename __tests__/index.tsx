@@ -123,7 +123,7 @@ describe('VideoSnapshot', () => {
   it('should throw an error when the video fails to load', async () => {
     expect.assertions(2);
     const {videoFile, video} = setup();
-    (video.addEventListener as any).mockImplementation((eventName, callback) => {
+    (video.addEventListener as any).mockImplementation((eventName: string, callback: Function) => {
       if (eventName === 'error') {
         callback();
       }
