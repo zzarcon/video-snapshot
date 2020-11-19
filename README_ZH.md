@@ -4,20 +4,20 @@
 </div>
 
 # video-snapshot [![Build Status](https://travis-ci.org/zzarcon/video-snapshot.svg?branch=master)](https://travis-ci.org/zzarcon/video-snapshot)
-> Get snapshots from a video file in the browser
+> 在浏览器中获取到视频的截图
 
-EN | [中文文档](./README_ZH.md)
+[EN](https://zzarcon.github.io/video-snapshot) | 中文文档
 
 # Demo 💅
 [https://zzarcon.github.io/video-snapshot](https://zzarcon.github.io/video-snapshot)
 
-# Install 🚀
+# 安装 🚀
 
 ```
 $ yarn add video-snapshot
 ```
 
-# Usage ⛏
+# 使用 ⛏
 
 ```javascript
 import VideoSnapshot from 'video-snapshot';
@@ -26,10 +26,10 @@ document.querySelector('input[type="file"]').addEventListener('change', onChange
 
 const onChange = async (e) => {
   const snapshoter = new VideoSnapshot(e.target.files[0]);
-  // Support URL
+  // 增加支持URL
   // const snapshoter = new VideoSnapshot('http://myserver.com/demo.mp4');
   const previewSrc = await snapshoter.takeSnapshot();
-  // Support custom your snapshot size
+  // 增加按宽高尺寸截图
   // const previewSrc = await snapshoter.takeSnapshot(0, 200, 300);
   const img = document.createElement('img');
 
@@ -52,13 +52,27 @@ class VideoSnapshot {
 }
 ```
 
-# Features 💸
+- [x] 增加实例化参数支持远程视频URL
+- [x] 增加按尺寸截图，减少返回base64体积  
 
-* Dependency free
-* [2kb size](https://bundlephobia.com/result?p=video-snapshot@1.0.1)
-* Take snapshot at any time
-* You can pass **smart times** to easily get better previews
+# 功能 💸
+
+* 不依赖第三方组件
+* 体积小，[2kb size](https://bundlephobia.com/result?p=video-snapshot@1.0.1)
+* 可以在任何时间点截图
+* 可以通过 **smart times** 获得更好的预览
+  
+# 开发
+
+## 安装
+
+```
+yarn install --ignore-engines
+```
 
 # Author 🦄
 
 [@zzarcon](https://twitter.com/zzarcon)
+
+**Updated by**
+[@tommyshao](https://github.com/tomieric)
