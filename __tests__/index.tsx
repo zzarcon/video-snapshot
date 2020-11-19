@@ -121,7 +121,7 @@ describe('VideoSnapshot', () => {
   })
 
   it('should throw an error when the video fails to load', async () => {
-    expect.assertions(1);
+    expect.assertions(2);
     const {videoFile, video} = setup();
     (video.addEventListener as any).mockImplementation((eventName, callback) => {
       if (eventName === 'error') {
@@ -133,7 +133,8 @@ describe('VideoSnapshot', () => {
     try {
       await snapshoter.getDimensions()
     } catch (error) {
-      expect(error).toEqual('failed to load video')
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toEqual('failed to load video')
     }
   });
 });

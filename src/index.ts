@@ -72,7 +72,7 @@ class VideoSnapshot {
         resolve(video);
       });
       video.addEventListener('error', () => {
-        reject('failed to load video');
+        reject(new Error('failed to load video'));
       })
     });
   

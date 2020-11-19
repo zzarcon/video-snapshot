@@ -49,7 +49,7 @@ export default class App extends Component<AppProps, AppState> {
         videoPreview
       });
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
     
     this.setState({
