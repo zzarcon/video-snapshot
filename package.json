@@ -1,6 +1,6 @@
 {
   "name": "video-snapshot",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Get snapshots from a video file in the browser",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/es2015/index.js",
