@@ -20,6 +20,10 @@ class VideoSnapshot {
     const video = await this.loadVideo(time);
     const canvas = document.createElement('canvas');
 
+    if (!video.videoWidth && !video.videoHeight) {
+      throw new Error("error retrieving video dimensions");
+    }
+
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     const context = canvas.getContext('2d');
