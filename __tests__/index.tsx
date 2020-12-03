@@ -2,7 +2,8 @@ declare var global: any;
 import VideoSnapshot from '../src';
 
 describe('VideoSnapshot', () => {
-  const setup = () => {
+  const setup = (opts: { videoWith?: number; videoHeight?: number } = {}) => {
+    const { videoWith, videoHeight } = opts;
     const videoFile = new File([''], 'video.mp4');
     const createObjectURL = jest.fn().mockReturnValue('video-url');
     const revokeObjectURL = jest.fn();
@@ -23,12 +24,13 @@ describe('VideoSnapshot', () => {
       removeEventListener,
       play,
       pause,
-      videoWidth: 100,
-      width: 100,
-      videoHeight: 50,
-      height: 50,
+      videoWidth: typeof videoWith === "number" ? videoWith : 100,
+      width: typeof videoWith === "number" ? videoWith : 100,
+      videoHeight: typeof videoHeight === "number" ? videoHeight : 50,
+      height: typeof videoHeight === "number" ? videoHeight : 50,
       duration: 100,
     };
+
     const createElement = jest.fn().mockImplementation((type: string) => {
       if (type === 'video') {
         return video;
@@ -135,6 +137,19 @@ describe('VideoSnapshot', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toEqual('failed to load video')
+    }
+  });
+
+  it("should throw an error if the video has empty dimensions", async () => {
+    expect.assertions(2);
+    const { videoFile } = setup({ videoWith: 0, videoHeight: 0 });
+    const snapshoter = new VideoSnapshot(videoFile);
+
+    try {
+      await snapshoter.takeSnapshot();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toEqual("error retrieving video dimensions");
     }
   });
 });
