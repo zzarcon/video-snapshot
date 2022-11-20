@@ -52,7 +52,8 @@ class VideoSnapshot {
       video.preload = 'metadata';
       video.src = this.videoUrl;
       video.muted = true;
-
+      video.playsInline = true;
+      
       if (time === 0) {
         video.play();
       } else {
